@@ -61,4 +61,15 @@ export class NodeNewsService {
     const insertHits = new this.hitsNews(hitsData);
     return await insertHits.save();
   }
+
+  async deleteHit(params: any) {
+    const removeHit = this.hitsNews.find();
+    console.log(params.storyId);
+
+    const removeIt = await removeHit.deleteOne({
+      story_id: parseInt(params.storyId),
+    });
+
+    return removeIt;
+  }
 }

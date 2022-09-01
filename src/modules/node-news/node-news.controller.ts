@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { CreateNodeNewDto } from './dto/create-node-new.dto';
 import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
@@ -33,5 +41,10 @@ export class NodeNewsController {
   @Post('/hits')
   insertHits(@Body() hitsNews: CreateNodeNewDto): Promise<HitsNews> {
     return this.nodeNewsService.insertHitsNews(hitsNews);
+  }
+
+  @Delete('/hits/stories/:storyId')
+  removeHit(@Param() storyId: number): Promise<boolean> {
+    return this.nodeNewsService.deleteHit(storyId);
   }
 }
