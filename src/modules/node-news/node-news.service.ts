@@ -7,6 +7,7 @@ import { map } from 'rxjs';
 import { CreateNodeNewDto } from './dto/create-node-new.dto';
 import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
+import * as _ from 'lodash';
 
 // import { CreateNodeNewDto } from './dto/create-node-new.dto';
 // import { UpdateNodeNewDto } from './dto/update-node-new.dto';
@@ -29,14 +30,26 @@ export class NodeNewsService {
     return news;
   }
 
-  async getNewsWithFilters() {
-    const news = await this.nodeNews.find();
-    const jsonNews = JSON.stringify(news);
-    const parseNews = JSON.parse(jsonNews);
-    console.log('news', jsonNews);
-    console.log('hits: ', parseNews[0]['hits']);
+  async getNewsWithFilters(params: any, title: any) {
+    const hits = await this.hitsNews.find();
 
-    return parseNews[0]['hits'];
+    if (params.author !== '') {
+      const result = _.find(hits, ['author', params.author]);
+      return result;
+    }
+
+    if (params.title !== '') {
+      // TODO: Cambiar a que use DTO y el title
+      const hitsTitle = await this.hitsNews.find({
+        comment_text: { $regex: params.title },
+      });
+
+      return hitsTitle;
+    }
+
+    console.log(hits);
+
+    return hits;
   }
 
   async insertNodeNews(newsData: CreateNodeNewDto) {

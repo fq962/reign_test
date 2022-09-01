@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { CreateNodeNewDto } from './dto/create-node-new.dto';
 import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
@@ -21,8 +21,8 @@ export class NodeNewsController {
   }
 
   @Get('api/filters')
-  getNewsWithFilters() {
-    return this.nodeNewsService.getNewsWithFilters();
+  getNewsWithFilters(@Query() author: string, title: string) {
+    return this.nodeNewsService.getNewsWithFilters(author, title);
   }
 
   @Post()
