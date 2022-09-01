@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateNodeNewDto } from './dto/create-node-new.dto';
+import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
 import { NodeNewsService } from './node-news.service';
 // import { CreateNodeNewDto } from './dto/create-node-new.dto';
@@ -27,5 +28,10 @@ export class NodeNewsController {
   @Post()
   insertNews(@Body() newsData: CreateNodeNewDto): Promise<NodeNews> {
     return this.nodeNewsService.insertNodeNews(newsData);
+  }
+
+  @Post('/hits')
+  insertHits(@Body() hitsNews: CreateNodeNewDto): Promise<HitsNews> {
+    return this.nodeNewsService.insertHitsNews(hitsNews);
   }
 }

@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { map } from 'rxjs';
 import { CreateNodeNewDto } from './dto/create-node-new.dto';
+import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
 
 // import { CreateNodeNewDto } from './dto/create-node-new.dto';
@@ -14,6 +15,7 @@ import { NodeNews } from './interfaces/node-news.interface';
 export class NodeNewsService {
   constructor(
     @InjectModel('NodeNews') private readonly nodeNews: Model<NodeNews>,
+    @InjectModel('HitsNews') private readonly hitsNews: Model<HitsNews>,
     private readonly httpService: HttpService,
   ) {}
 
@@ -40,5 +42,10 @@ export class NodeNewsService {
   async insertNodeNews(newsData: CreateNodeNewDto) {
     const insertNews = new this.nodeNews(newsData);
     return await insertNews.save();
+  }
+
+  async insertHitsNews(hitsData: CreateNodeNewDto) {
+    const insertHits = new this.hitsNews(hitsData);
+    return await insertHits.save();
   }
 }
