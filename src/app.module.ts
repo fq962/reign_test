@@ -8,7 +8,7 @@ import { NodeNewsModule } from './modules/node-news/node-news.module';
 @Module({
   imports: [
     NodeNewsModule,
-    MongooseModule.forRoot('mongodb://localhost:27017'),
+    MongooseModule.forRoot('mongodb://localhost/test_db'),
   ],
   controllers: [AppController],
   providers: [AppService],
