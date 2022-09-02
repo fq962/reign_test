@@ -8,6 +8,7 @@ import { CreateNodeNewDto } from './dto/create-node-new.dto';
 import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
 import * as _ from 'lodash';
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 // import { CreateNodeNewDto } from './dto/create-node-new.dto';
 // import { UpdateNodeNewDto } from './dto/update-node-new.dto';
@@ -20,9 +21,43 @@ export class NodeNewsService {
     private readonly httpService: HttpService,
   ) {}
 
+  // @Cron('1 * * * * *')
+  // handleCron() {
+  //   console.log('Called when the current ', Date());
+  // }
+
+  @Cron(CronExpression.EVERY_10_HOURS)
+  async handleCron() {
+    console.log('Called when the current ', Date());
+    const url = `https://hn.algolia.com/api/v1/search_by_date?query=nodejs`;
+    const response = this.httpService.get(url).subscribe((response) => {
+      const hits = response.data.hits;
+      console.log(hits.length);
+      for (let i = 0; i < hits.length; i++) {
+        const insertHits = new this.hitsNews(hits[i]);
+        const saveHits = insertHits.save();
+
+        // console.log('tengo N regisstros: ', hits[i]); //use i instead of 0
+      }
+      return true;
+    });
+
+    return response;
+    // const news = await this.nodeNews.find();
+    // console.log(JSON.stringify(news));
+  }
+
   async getNodeNews() {
     const url = `https://hn.algolia.com/api/v1/search_by_date?query=nodejs`;
-    return this.httpService.get(url).pipe(map((response) => response.data));
+    const response = this.httpService.get(url).pipe(
+      map((response) => {
+        const hits = response.data.hits;
+
+        return response.data;
+      }),
+    );
+
+    return response;
   }
 
   async getNews() {
@@ -46,8 +81,6 @@ export class NodeNewsService {
 
       return hitsTitle;
     }
-
-    console.log(hits);
 
     return hits;
   }
