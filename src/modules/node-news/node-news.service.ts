@@ -27,25 +27,23 @@ export class NodeNewsService {
   //   console.log('Called when the current ', Date());
   // }
 
-  @Cron(CronExpression.EVERY_10_HOURS)
+  @Cron(CronExpression.EVERY_HOUR)
   async handleCron() {
-    console.log('Called when the current ', Date());
+    console.log('Executed every hour');
     const url = `https://hn.algolia.com/api/v1/search_by_date?query=nodejs`;
     const response = this.httpService.get(url).subscribe((response) => {
       const hits = response.data.hits;
-      console.log(hits.length);
+
       for (let i = 0; i < hits.length; i++) {
         const insertHits = new this.hitsNews(hits[i]);
         const saveHits = insertHits.save();
-
-        // console.log('tengo N regisstros: ', hits[i]); //use i instead of 0
+        console.log(saveHits);
       }
+
       return true;
     });
 
     return response;
-    // const news = await this.nodeNews.find();
-    // console.log(JSON.stringify(news));
   }
 
   async getNodeNews() {
@@ -67,18 +65,30 @@ export class NodeNewsService {
   }
 
   async getNewsWithFilters(params: getHitsDTO) {
-    const hits = await this.hitsNews.find();
+    const hits = await this.hitsNews
+      .find()
+      .skip((params.pageNumber - 1) * 5)
+      .limit(5);
 
-    if (params.author !== '') {
-      const result = _.find(hits, ['author', params.author]);
-      return result;
-    }
+    // if (params.author !== '') {
+    //   const result = _.find(hits, ['author', params.author]);
+    //   return result;
+    // }
 
-    if (params.title !== '') {
-      // TODO: Cambiar a que use el title
+    if (params.author !== '' || params.title !== '') {
       const hitsTitle = await this.hitsNews.find({
-        comment_text: { $regex: params.title },
+        $or: [
+          { author: { $regex: params.author !== '' ? params.author : 'null' } },
+          {
+            story_title: {
+              $regex: params.title !== '' ? params.title : 'null',
+            },
+          },
+        ],
       });
+      // const hitsTitle = await this.hitsNews.find({
+      //   story_title: { $regex: params.title },
+      // });
 
       return hitsTitle;
     }

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsNotEmpty, IsInt, Min } from 'class-validator';
 
 export class getHitsDTO {
   //*
@@ -22,4 +22,15 @@ export class getHitsDTO {
   @Type(() => String)
   @IsString()
   public title: string;
+
+  //*
+  @ApiProperty({
+    description: 'Number of the page',
+    required: true,
+  })
+  @IsNotEmpty()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  public pageNumber: number;
 }
