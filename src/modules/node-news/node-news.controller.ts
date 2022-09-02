@@ -8,6 +8,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateNodeNewDto } from './dto/create-node-new.dto';
+import { getHitsDTO } from './dto/get-hits.dto';
 import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
 import { NodeNewsService } from './node-news.service';
@@ -29,8 +30,8 @@ export class NodeNewsController {
   }
 
   @Get('api/filters')
-  getNewsWithFilters(@Query() author: string, title: string) {
-    return this.nodeNewsService.getNewsWithFilters(author, title);
+  getNewsWithFilters(@Query() params: getHitsDTO) {
+    return this.nodeNewsService.getNewsWithFilters(params);
   }
 
   @Post()

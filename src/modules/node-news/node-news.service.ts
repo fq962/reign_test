@@ -9,6 +9,7 @@ import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
 import * as _ from 'lodash';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { getHitsDTO } from './dto/get-hits.dto';
 
 // import { CreateNodeNewDto } from './dto/create-node-new.dto';
 // import { UpdateNodeNewDto } from './dto/update-node-new.dto';
@@ -65,7 +66,7 @@ export class NodeNewsService {
     return news;
   }
 
-  async getNewsWithFilters(params: any, title: any) {
+  async getNewsWithFilters(params: getHitsDTO) {
     const hits = await this.hitsNews.find();
 
     if (params.author !== '') {
@@ -74,7 +75,7 @@ export class NodeNewsService {
     }
 
     if (params.title !== '') {
-      // TODO: Cambiar a que use DTO y el title
+      // TODO: Cambiar a que use el title
       const hitsTitle = await this.hitsNews.find({
         comment_text: { $regex: params.title },
       });
