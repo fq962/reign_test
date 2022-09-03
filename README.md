@@ -44,17 +44,48 @@ Finally we start our MongoDB service, in our terminal we execute the following c
 $  mongod
 ```
 
-### Producción
+## NOTE
+We can use Compass to see our DB when it is created or some other IDE that can connect to a Mongo DB like Navicat or another
+
+### Raise the API
+
+## First step
+
+We clone the project, and get our node_modules
 
 ```
-$  npm run start:prod
+$  npm install
 ```
 
-## ¿Que son los DTOs de NestJS?
+## Second step
 
-Los DTOs o Data Transfer Object son un objeto que se transfiere por la red entre dos sistemas, son utilizados mayormente en aplicaciones cliente/servidor y aplicaciones Web modernas.
+We run the API with the NestJS command
 
-### Ejemplo DTO
+```
+$  nest start
+```
+
+Or we can execute the following command to see the changes in the API automatically
+
+```
+$  nest start:dev
+```
+
+## NOTE
+The API has a CRON (Task scheduling) and when the application is started it runs every hour, what it does is get the news from the provided URL and insert the information in the DB.
+
+We can modify the time so that it runs every 10 seconds or every 10 minutes and thus be able to see the functionality and have records in the DB.
+
+In our **node-new.service** we can change the CRON time from **EVERY_HOUR** to **EVERY_10_MINUTES** or **EVERY_10_SECONDS** or even some specific time.
+
+
+### Endpoints and Routes
+
+## Swagger
+I have generated a swagger to make it easier to request and consume the API. <br>
+This can be found in the following link:
+#### [SWAGGER Localhost](http://localhost:3000/api/)<br />
+
 
 ```bash
 import { ApiProperty } from '@nestjs/swagger';

@@ -21,7 +21,7 @@ export class NodeNewsService {
   ) {}
 
   // Every hour the Cron job will be executed
-  @Cron(CronExpression.EVERY_30_MINUTES)
+  @Cron(CronExpression.EVERY_HOUR)
   async handleCron() {
     const url = `https://hn.algolia.com/api/v1/search_by_date?query=nodejs`;
     this.httpService.get(url).subscribe(async (response) => {
