@@ -1,73 +1,140 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://allasexpress.com/apks/Imagenes%20CP/allasXnest2.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Versiones
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+#### • **Nest:** 8.2.5 _(Actualmente usada)_<br />
 
-## Description
+#### • **Node:** v16.15.0 _(Actualmente usada)_<br />
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+#### • **NPM:** 8.5.5 \_(Actualmente usada)<br />
 
-## Installation
+## Links que pueden serte útil
 
-```bash
-$ npm install
-```
+#### [Repositorio API](https://bitbucket.org/allas-repuestos/canje-premios-api/src/dev/)<br />
 
-## Running the app
+#### [Documentacion](https://allasrepuestos.atlassian.net/wiki/spaces/CA/pages/327683/Requisitos+de+Soluci+n+-+Canje+de+premio+-+2o+trimestre+-+2022)<br />
+
+#### [Requerimientos](https://allasrepuestos.atlassian.net/wiki/spaces/CA/pages/4587593/Requerimientos+funcionales+API)<br />
+
+#### [Ambientes de Produccion](https://allasrepuestos.atlassian.net/wiki/spaces/CA/pages/2458012/Preparar+ambientes+de+produccion+y+de+desarrollo+Node+v16)<br />
+
+# REST API CP
+
+Esta es la API actual que se esta utilizando en produccion para el sistema de Canje de Premios de ALLAS Repuestos para proveer una herramienta que la empresa pueda utilizarla para aumentar la conversión de los clientes, así como aumentar su lealtad a la empresa e influenciar su comportamiento de compra.
+
+## ¿Que es una REST API?
+
+Una API, o interfaz de programación de aplicaciones, es un conjunto de reglas que determinan cómo las aplicaciones o los dispositivos pueden conectarse y comunicarse entre sí. Una API REST es una API que se ajusta a los principios de diseño de REST, un estilo de arquitectura también denominado transferencia de estado representacional.
+
+## Instalación
+
+Antes de poder utilizar y consumir la API es necesario instalar los paquetes de NODE en su ultima version con el comando **npm install** o su comando corto:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$  npm i
 ```
 
-## Test
+## Iniciar el API
+
+Para poder iniciar el API existen 2 comandos, uno para desarrollo y otro para produccion que serian los siguiente:
+
+### Desarrollo
+
+```
+$  npm run start:dev
+```
+
+### Producción
+
+```
+$  npm run start:prod
+```
+
+## ¿Que son los DTOs de NestJS?
+
+Los DTOs o Data Transfer Object son un objeto que se transfiere por la red entre dos sistemas, son utilizados mayormente en aplicaciones cliente/servidor y aplicaciones Web modernas.
+
+### Ejemplo DTO
 
 ```bash
-# unit tests
-$ npm run test
+import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsInt, IsOptional, IsString } from 'class-validator';
+import { Url } from 'url';
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+export class InfoProductoDto {
+    //*
+    @ApiProperty({
+        description: 'Devuelve info de un producto por su codigo de producto',
+        required: false,
+    })
+    @IsOptional()
+    @Type((type) => String)
+    @IsString()
+    public codigoProducto?: string;
+}
 ```
 
-## Support
+### Modules
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+En la carpeta **src** se encuentra la carpeta **Modules** donde estan las carpetas de cada modulo de Canje de Premios, ahi mismo se encuentras los _DTOs_, los _Controllers_ y los _service_ para realizar cada consulta a la base de datos.
 
-## Stay in touch
+![Modules API](https://allasexpress.com/apks/Imagenes%20CP/ejemplo.png)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Como crear un Module nuevo
 
-## License
+Para crear un nuevo _**Module**_ es tan sencillo como ejecutar el siguiente comando de Nest:
 
-Nest is [MIT licensed](LICENSE).
+### Ejemplo
+
+Vamos a crear un modulo llamado **ejemplo**, primero especificapos la carpeta donde vamos a crear el modulo seguido del nombre.
+
+```bash
+$  nest g res modules/ejemplo
+```
+
+Luego verificamos que el modulo sea creado con exito.
+
+![Ejemplo Module](https://allasexpress.com/apks/Imagenes%20CP/moduleEjemplo.png)
+
+## Controllers
+
+Los **Controllers** son de las piezas principales de las aplicacion, nos ayudan a dar soporte o respoder las solicitudes realizadas al servidor.
+
+```bash
+# Ejemplo de un Controller
+@Controller('carritos')
+export class CarritoController {
+    constructor(private readonly carritoService: CarritoService) {}
+
+    //* <- RECIBE LAS SOLICITUDES PARA OBTENER EL DETALLE DE UN CARRITO ->
+    @Get(':carritoId/customers/:customerId')
+    obtieneCarritoDetalle(@Param() params: GetCarritoDetalleDto) {
+        return this.carritoService.obtieneCarritoDetalle(params);
+    }
+}
+```
+
+## Services
+
+Los **Services** nos proporcionan el acceso a los datos que necesita la aplicacion o el cliente para funcionar. Estos nos ayudar a liberar el codigo de los Controllers.
+
+```bash
+# Ejemplo de un Service
+@Injectable()
+export class CarritoService {
+    constructor(private readonly pgService: PgService) {}
+
+    //* <- RECIBE LAS SOLICITUDES PARA OBTENER EL DETALLE DE UN CARRITO ->
+    @Get(':carritoId/customers/:customerId')
+    obtieneCarritoDetalle(@Param() params: GetCarritoDetalleDto) {
+        return this.carritoService.obtieneCarritoDetalle(params);
+    }
+}
+```
+
+### Licencia
+
+Derechos reservados a **ALLAS Repuestos**.

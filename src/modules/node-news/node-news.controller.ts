@@ -29,7 +29,7 @@ export class NodeNewsController {
     return this.nodeNewsService.getNews();
   }
 
-  @Get('api/filters')
+  @Get('hits/filters')
   getNewsWithFilters(@Query() params: getHitsDTO) {
     return this.nodeNewsService.getNewsWithFilters(params);
   }

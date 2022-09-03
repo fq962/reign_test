@@ -67,7 +67,7 @@ export class NodeNewsService {
       .skip((params.pageNumber - 1) * 5)
       .limit(5);
 
-    if (params.author !== '' || params.title !== '' || params.tags !== '') {
+    if (params.author || params.title || params.tags) {
       const hitsTitle = await this.hitsNews
         .find({
           $or: [

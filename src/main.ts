@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // Swagger Config
   const config = new DocumentBuilder()
-    .setTitle('Api Canje de premios')
+    .setTitle('TEST FOR REIGN')
     .setDescription('TEST FOR REIGN APPLICATION')
     .setVersion('1.0')
     .setContact(
