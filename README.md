@@ -29,22 +29,19 @@ To install MongoDB we need to execute a series of steps
 We need to install MongoDB on our PC, we can do this in the following link:
 #### [MongoDB Commnity Server](https://bitbucket.org/allas-repuestos/canje-premios-api/src/dev/)<br />
 
-## Instalación
+## Second step
 
-Antes de poder utilizar y consumir la API es necesario instalar los paquetes de NODE en su ultima version con el comando **npm install** o su comando corto:
+We are going to create in our **local disk C:** a folder called **data**data and inside it a folder called **db**, it would look like this: **C:\data\db**
 
-```bash
-$  npm i
-```
+## Third step
 
-## Iniciar el API
+We have to add the file **bin** to the path of our environment variables, normally this is located in **C:\Program Files\MongoDB\Server\6.0\bin**
+## Fourth step
 
-Para poder iniciar el API existen 2 comandos, uno para desarrollo y otro para produccion que serian los siguiente:
-
-### Desarrollo
+Finally we start our MongoDB service, in our terminal we execute the following command
 
 ```
-$  npm run start:dev
+$  mongod
 ```
 
 ### Producción
