@@ -4,11 +4,11 @@
 
 ## Some Facilities
 
-#### • **Nest:** 9.0.0 _(Currently used)_<br />
+#### • **NestJS:** 8.2.6 _(Currently used)_<br />
+#### • **NodeJS:** v16.17.0 LTS _(Currently used)_<br />
 
-#### • **Node:** v16.17.0 LTS _(Currently used)_<br />
-
-#### • **NPM:** 8.5.5 \_(Currently used)<br />
+#### • **NPM:** 8.15.0 _(Currently used)_ <br />
+#### • **NVM:** 1.1.9 _(Currently used)_ <br />
 
 # Install MongoDB
 
