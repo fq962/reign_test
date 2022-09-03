@@ -10,16 +10,6 @@
 
 #### • **NPM:** 8.5.5 \_(Currently used)<br />
 
-## Links que pueden serte útil
-
-#### [Repositorio API](https://bitbucket.org/allas-repuestos/canje-premios-api/src/dev/)<br />
-
-#### [Documentacion](https://allasrepuestos.atlassian.net/wiki/spaces/CA/pages/327683/Requisitos+de+Soluci+n+-+Canje+de+premio+-+2o+trimestre+-+2022)<br />
-
-#### [Requerimientos](https://allasrepuestos.atlassian.net/wiki/spaces/CA/pages/4587593/Requerimientos+funcionales+API)<br />
-
-#### [Ambientes de Produccion](https://allasrepuestos.atlassian.net/wiki/spaces/CA/pages/2458012/Preparar+ambientes+de+produccion+y+de+desarrollo+Node+v16)<br />
-
 # Install MongoDB
 
 To install MongoDB we need to execute a series of steps
