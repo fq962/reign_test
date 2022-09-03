@@ -102,3 +102,5 @@ or
 or
 ✅ **_Filter title:_** News this year
 
+# LINTER
+For the configuration of the Linter I use the TypeScript and Prettier rules, you can see it in the file _.eslintrc.js_. <br>
