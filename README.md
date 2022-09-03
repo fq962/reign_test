@@ -17,7 +17,7 @@ We need to install MongoDB on our PC, we can do this in the following link:
 
 ## Second step
 
-We are going to create in our **local disk C:** a folder called **data**data and inside it a folder called **db**, it would look like this: **C:\data\db**
+We are going to create in our **local disk C:** a folder called **data** and inside it a folder called **db**, it would look like this: **C:\data\db**
 
 ## Third step
 
