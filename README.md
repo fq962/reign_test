@@ -107,7 +107,7 @@ I have one or several elements with the title **"Node News in this year"**, if I
 or
 ❌ **_Filter title:_** news this Year
 
-**Correct this way**
+**Correct way**
 ✅ **_Filter title:_** Node News
 or
 ✅ **_Filter title:_** News this year
