@@ -2,13 +2,13 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://allasexpress.com/apks/Imagenes%20CP/allasXnest2.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
-## Versiones
+## Some Facilities
 
-#### • **Nest:** 8.2.5 _(Actualmente usada)_<br />
+#### • **Nest:** 9.0.0 _(Currently used)_<br />
 
-#### • **Node:** v16.15.0 _(Actualmente usada)_<br />
+#### • **Node:** v16.17.0 LTS _(Currently used)_<br />
 
-#### • **NPM:** 8.5.5 \_(Actualmente usada)<br />
+#### • **NPM:** 8.5.5 \_(Currently used)<br />
 
 ## Links que pueden serte útil
 
