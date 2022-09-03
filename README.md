@@ -13,7 +13,7 @@ To install MongoDB we need to execute a series of steps
 ## First step
 
 We need to install MongoDB on our PC, we can do this in the following link:
-#### [MongoDB Commnity Server](https://bitbucket.org/allas-repuestos/canje-premios-api/src/dev/)<br />
+#### [MongoDB Commnity Server](https://www.mongodb.com/try/download/community)<br />
 
 ## Second step
 
