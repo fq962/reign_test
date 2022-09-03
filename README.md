@@ -98,7 +98,7 @@ In the endpoint that obtains the information from the database, it has filters _
 **Filter by title:** in this filter we use the _storytitle_ field since the _title_ field returns null in all news. <br>
 **Filter by tags:** In this filter we use the _tags_ field to filter the API response. <br>
 
-## NOTE
+## IMPORTANT!
 Please use exact words to use the filters, for example: <br>
 I have one or several elements with the title **"Node News in this year"**, if I want to use the _title_ filter, I have to search for any word that is equal to any of the title but the same as it is written in the registry
 
