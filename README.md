@@ -86,84 +86,29 @@ I have generated a swagger to make it easier to request and consume the API. <br
 This can be found in the following link:
 #### [SWAGGER](http://localhost:3000/api/)<br />
 
+## Postman
+I have also generated a collection in Postman which you can import and use in your client. _The routes and request are ready to be used_
 
-```bash
-import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsInt, IsOptional, IsString } from 'class-validator';
-import { Url } from 'url';
+### Link a importar: https://www.getpostman.com/collections/e145d5f7e3c7683675c6
 
-export class InfoProductoDto {
-    //*
-    @ApiProperty({
-        description: 'Devuelve info de un producto por su codigo de producto',
-        required: false,
-    })
-    @IsOptional()
-    @Type((type) => String)
-    @IsString()
-    public codigoProducto?: string;
-}
-```
+## How to use routes?
+In the endpoint that obtains the information from the database, it has filters _(node-news/hits/filters)_ such as:
+**Pagination:** here it shows the news 5 by 5 and the default page is 1. <br>
+**Filter by Author:** for this filter the _author_ field is used where it shows us the author's news that we place in the request. <br>
+**Filter by title:** in this filter we use the _storytitle_ field since the _title_ field returns null in all news. <br>
+**Filter by tags:** In this filter we use the _tags_ field to filter the API response. <br>
 
-### Modules
+## NOTE
+Please use exact words to use the filters, for example: <br>
+I have one or several elements with the title **"Node News in this year"**, if I want to use the _title_ filter, I have to search for any word that is equal to any of the title but the same as it is written in the registry
 
-En la carpeta **src** se encuentra la carpeta **Modules** donde estan las carpetas de cada modulo de Canje de Premios, ahi mismo se encuentras los _DTOs_, los _Controllers_ y los _service_ para realizar cada consulta a la base de datos.
+**Not this way**
+❌ **_Filter title:_** node news
+or
+❌ **_Filter title:_** news this Year
 
-![Modules API](https://allasexpress.com/apks/Imagenes%20CP/ejemplo.png)
+**Correct this way**
+✅ **_Filter title:_** Node News
+or
+✅ **_Filter title:_** News this year
 
-## Como crear un Module nuevo
-
-Para crear un nuevo _**Module**_ es tan sencillo como ejecutar el siguiente comando de Nest:
-
-### Ejemplo
-
-Vamos a crear un modulo llamado **ejemplo**, primero especificapos la carpeta donde vamos a crear el modulo seguido del nombre.
-
-```bash
-$  nest g res modules/ejemplo
-```
-
-Luego verificamos que el modulo sea creado con exito.
-
-![Ejemplo Module](https://allasexpress.com/apks/Imagenes%20CP/moduleEjemplo.png)
-
-## Controllers
-
-Los **Controllers** son de las piezas principales de las aplicacion, nos ayudan a dar soporte o respoder las solicitudes realizadas al servidor.
-
-```bash
-# Ejemplo de un Controller
-@Controller('carritos')
-export class CarritoController {
-    constructor(private readonly carritoService: CarritoService) {}
-
-    //* <- RECIBE LAS SOLICITUDES PARA OBTENER EL DETALLE DE UN CARRITO ->
-    @Get(':carritoId/customers/:customerId')
-    obtieneCarritoDetalle(@Param() params: GetCarritoDetalleDto) {
-        return this.carritoService.obtieneCarritoDetalle(params);
-    }
-}
-```
-
-## Services
-
-Los **Services** nos proporcionan el acceso a los datos que necesita la aplicacion o el cliente para funcionar. Estos nos ayudar a liberar el codigo de los Controllers.
-
-```bash
-# Ejemplo de un Service
-@Injectable()
-export class CarritoService {
-    constructor(private readonly pgService: PgService) {}
-
-    //* <- RECIBE LAS SOLICITUDES PARA OBTENER EL DETALLE DE UN CARRITO ->
-    @Get(':carritoId/customers/:customerId')
-    obtieneCarritoDetalle(@Param() params: GetCarritoDetalleDto) {
-        return this.carritoService.obtieneCarritoDetalle(params);
-    }
-}
-```
-
-### Licencia
-
-Derechos reservados a **ALLAS Repuestos**.
