@@ -47,7 +47,7 @@ $  mongod
 ## NOTE
 We can use Compass to see our DB when it is created or some other IDE that can connect to a Mongo DB like Navicat or another
 
-### Raise the API
+# RAISE the API
 
 ## First step
 
@@ -79,12 +79,12 @@ We can modify the time so that it runs every 10 seconds or every 10 minutes and 
 In our **node-new.service** we can change the CRON time from **EVERY_HOUR** to **EVERY_10_MINUTES** or **EVERY_10_SECONDS** or even some specific time.
 
 
-### Endpoints and Routes
+# Endpoints and Routes
 
 ## Swagger
 I have generated a swagger to make it easier to request and consume the API. <br>
 This can be found in the following link:
-#### [SWAGGER Localhost](http://localhost:3000/api/)<br />
+#### [SWAGGER](http://localhost:3000/api/)<br />
 
 
 ```bash
