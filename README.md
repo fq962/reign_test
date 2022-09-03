@@ -20,13 +20,14 @@
 
 #### [Ambientes de Produccion](https://allasrepuestos.atlassian.net/wiki/spaces/CA/pages/2458012/Preparar+ambientes+de+produccion+y+de+desarrollo+Node+v16)<br />
 
-# REST API CP
+# Install MongoDB
 
-Esta es la API actual que se esta utilizando en produccion para el sistema de Canje de Premios de ALLAS Repuestos para proveer una herramienta que la empresa pueda utilizarla para aumentar la conversión de los clientes, así como aumentar su lealtad a la empresa e influenciar su comportamiento de compra.
+To install MongoDB we need to execute a series of steps
 
-## ¿Que es una REST API?
+## First step
 
-Una API, o interfaz de programación de aplicaciones, es un conjunto de reglas que determinan cómo las aplicaciones o los dispositivos pueden conectarse y comunicarse entre sí. Una API REST es una API que se ajusta a los principios de diseño de REST, un estilo de arquitectura también denominado transferencia de estado representacional.
+We need to install MongoDB on our PC, we can do this in the following link:
+#### [MongoDB Commnity Server](https://bitbucket.org/allas-repuestos/canje-premios-api/src/dev/)<br />
 
 ## Instalación
 
