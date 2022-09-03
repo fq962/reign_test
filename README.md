@@ -1,7 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://allasexpress.com/apks/Imagenes%20CP/allasXnest2.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
 ## Some Facilities
 
 #### • **NestJS:** 8.2.6 _(Currently used)_<br />
