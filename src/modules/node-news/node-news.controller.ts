@@ -8,8 +8,8 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateNodeNewDto } from './dto/create-node-new.dto';
+import { deleteHitDTO } from './dto/delete-story.dto';
 import { getHitsDTO } from './dto/get-hits.dto';
-import { HitsNews } from './interfaces/hits.interface';
 import { NodeNews } from './interfaces/node-news.interface';
 import { NodeNewsService } from './node-news.service';
 // import { CreateNodeNewDto } from './dto/create-node-new.dto';
@@ -40,12 +40,12 @@ export class NodeNewsController {
   }
 
   @Post('/hits')
-  insertHits(@Body() hitsNews: CreateNodeNewDto): Promise<HitsNews> {
+  insertHits(@Body() hitsNews: CreateNodeNewDto): Promise<boolean> {
     return this.nodeNewsService.insertHitsNews(hitsNews);
   }
 
-  @Delete('/hits/stories/:storyId')
-  removeHit(@Param() storyId: number): Promise<boolean> {
-    return this.nodeNewsService.deleteHit(storyId);
+  @Delete('/hits/createdAt/:created_at_i')
+  removeHit(@Param() created_at_i: deleteHitDTO): Promise<boolean> {
+    return this.nodeNewsService.deleteHit(created_at_i);
   }
 }

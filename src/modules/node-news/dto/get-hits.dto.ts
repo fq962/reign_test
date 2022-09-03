@@ -25,6 +25,16 @@ export class getHitsDTO {
 
   //*
   @ApiProperty({
+    description: 'Tag of the news',
+    required: false,
+  })
+  @IsOptional()
+  @Type(() => String)
+  @IsString()
+  public tags: string;
+
+  //*
+  @ApiProperty({
     description: 'Number of the page',
     required: true,
   })
